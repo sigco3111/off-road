@@ -65,12 +65,12 @@ class View {
   initTweakpane() {
     if (!this.debugUI) return
 
-    this.cameraFolder = this.debugUI.addFolder({ title: 'Camera', expanded: false })
+    this.cameraFolder = this.debugUI.addFolder({ title: '카메라', expanded: false })
 
     this.cameraMode = { zoomedOut: false }
 
     this.cameraFolder
-      .addBinding(this.cameraMode, 'zoomedOut', { label: 'Zoom Out Mode' })
+      .addBinding(this.cameraMode, 'zoomedOut', { label: '확대 보기 모드' })
       .on('change', ev => {
         if (ev.value) {
           this.game.view.zoomOutCamera()

@@ -34,20 +34,20 @@ class Floor{
   initTweakpane() {
     if (!this.debugUI) return
 
-    this.folder = this.debugUI.addFolder({ title: 'Floor', expanded: false })
+    this.folder = this.debugUI.addFolder({ title: '바닥', expanded: false })
 
-    const gridFolder = this.folder.addFolder({ title: 'Grid' })
-    const limitsFolder = this.folder.addFolder({ title: 'Limits' })
+    const gridFolder = this.folder.addFolder({ title: '그리드' })
+    const limitsFolder = this.folder.addFolder({ title: '제한' })
 
     gridFolder.addBinding(this.PARAMS, 'preset', {
       options: {
-        Dark: 'dark',
-        Contrast: 'contrast',
-        Default: 'default',
-        Blueprint: 'blueprint',
-        Retro: 'retro',
-        Neon: 'neon',
-        Funky: 'funky'
+        어두운: 'dark',
+        대비: 'contrast',
+        기본: 'default',
+        청사진: 'blueprint',
+        레트로: 'retro',
+        네온: 'neon',
+        펑키: 'funky'
       }
     })
     gridFolder.addBinding(this.PARAMS, 'opacity', { step: 0.01, min: 0, max: 0.1 })

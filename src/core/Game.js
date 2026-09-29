@@ -27,7 +27,7 @@ class Game{
     this.recordedChunks = []
     this.recorder = new Recorder(this.domElement, '#recordBtn')
 
-    this.debugUI = new DebugUI({ title: 'Edit Panel' })
+    this.debugUI = new DebugUI({ title: '편집 패널' })
     
     this.inputs = new Inputs([
       { name: 'forward', keys: ['ArrowUp', 'KeyW'] },

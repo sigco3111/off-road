@@ -19,14 +19,14 @@ export default class TweakpaneUI {
     if (!this.pane) return
 
     try {
-      this.assetsfolder = this.pane.addFolder({ title: 'Assets', expanded: false })
-      this.signsFolder = this.assetsfolder.addFolder({ title: 'Signs', expanded: false })
+      this.assetsfolder = this.pane.addFolder({ title: '에셋', expanded: false })
+      this.signsFolder = this.assetsfolder.addFolder({ title: '표지판', expanded: false })
       this.editParam = { editMode: false }
 
-      // binding toggle
-      const binding = this.pane.addBinding(this.editParam, 'editMode', { label: 'EDIT MODE' })
+      // 편집 모드 토글 바인딩
+      const binding = this.pane.addBinding(this.editParam, 'editMode', { label: '편집 모드' })
       this._controls.binding = binding
-      // store handler so it can be cleaned later
+      // 핸들러를 저장해 나중에 정리할 수 있도록 한다
       this._controls.onBindingChange = ev => this.onToggleEditMode?.(ev.value)
       binding.on('change', this._controls.onBindingChange)
 
@@ -42,37 +42,37 @@ export default class TweakpaneUI {
 
       this._controls.placingButtons = []
 
-      this._controls.placingButtons.push(makePlaceBtn(this.assetsfolder, 'Cone', 'cone'))
-      this._controls.placingButtons.push(makePlaceBtn(this.assetsfolder, 'Barrel', 'barrel'))
-      this._controls.placingButtons.push(makePlaceBtn(this.assetsfolder, 'Ramp', 'ramp'))
-      this._controls.placingButtons.push(makePlaceBtn(this.assetsfolder, 'Speed Bump', 'bump'))
-      this._controls.placingButtons.push(makePlaceBtn(this.assetsfolder, 'Concrete Barrier', 'barrier'))
-      this._controls.placingButtons.push(makePlaceBtn(this.assetsfolder, 'Tire', 'tire'))
+      this._controls.placingButtons.push(makePlaceBtn(this.assetsfolder, '콘', 'cone'))
+      this._controls.placingButtons.push(makePlaceBtn(this.assetsfolder, '배럴', 'barrel'))
+      this._controls.placingButtons.push(makePlaceBtn(this.assetsfolder, '경사로', 'ramp'))
+      this._controls.placingButtons.push(makePlaceBtn(this.assetsfolder, '과속방지턱', 'bump'))
+      this._controls.placingButtons.push(makePlaceBtn(this.assetsfolder, '콘크리트 방호벽', 'barrier'))
+      this._controls.placingButtons.push(makePlaceBtn(this.assetsfolder, '타이어', 'tire'))
 
-      // signs
-      this._controls.placingButtons.push(makePlaceBtn(this.signsFolder, 'Sign Ahead', 'signAhead'))
-      this._controls.placingButtons.push(makePlaceBtn(this.signsFolder, 'Sign Stop', 'signStop'))
-      this._controls.placingButtons.push(makePlaceBtn(this.signsFolder, 'Sign Warning', 'signWarning'))
-      this._controls.placingButtons.push(makePlaceBtn(this.signsFolder, 'Sign Do Not Enter', 'signNot'))
+      // 표지판
+      this._controls.placingButtons.push(makePlaceBtn(this.signsFolder, '전방 표지판', 'signAhead'))
+      this._controls.placingButtons.push(makePlaceBtn(this.signsFolder, '정지 표지판', 'signStop'))
+      this._controls.placingButtons.push(makePlaceBtn(this.signsFolder, '주의 표지판', 'signWarning'))
+      this._controls.placingButtons.push(makePlaceBtn(this.signsFolder, '진입금지 표지판', 'signNot'))
 
-      // zones
-      this._controls.placingButtons.push(makePlaceBtn(this.assetsfolder, 'Cargo Zone', 'cargoZone'))
-      
-      // save button
+      // 구역
+      this._controls.placingButtons.push(makePlaceBtn(this.assetsfolder, '화물 구역', 'cargoZone'))
+
+      // 저장 버튼
       this._controls.save = {}
-      const saveBtn = this.assetsfolder.addButton({ title: 'Save Assets' })
+      const saveBtn = this.assetsfolder.addButton({ title: '에셋 저장' })
       this._controls.save.handler = () => {
         this.onSaveAssets?.()
       }
       saveBtn.on('click', this._controls.save.handler)
       this._controls.save.btn = saveBtn
 
-      // initialize visual state
+      // 시각적 상태 초기화
       this.updateState(false)
     } catch (e) {
-      // Si tweakpane no está presente, guardamos el warning y seguimos
-      // No lanzamos errores para no romper la inicialización
-      console.warn('[TweakpaneUI] Tweakpane no disponible:', e)
+      // Tweakpane이 없으면 경고를 저장하고 계속 진행한다
+      // 초기화를 깨뜨리지 않도록 에러를 던지지 않는다
+      console.warn('[TweakpaneUI] Tweakpane을 사용할 수 없음:', e)
     }
   }
 
@@ -90,7 +90,7 @@ export default class TweakpaneUI {
       }
 
     } catch (e) {
-      // silencioso
+      // 조용히 무시
     }
   }
 
@@ -117,10 +117,9 @@ export default class TweakpaneUI {
   }
 
   dispose() {
-    // Intentamos limpiar handlers. Dependiendo de la versión de tweakpane
-    // las API de off() pueden diferir; hacemos lo básico.
+    // 핸들러 정리를 시도한다. Tweakpane 버전에 따라 off() 동작이 다를 수 있으므로 기본만 수행한다.
     try {
-      if (this._controls?.binding && this._controls.onBindingChange) {
+      if (this._controls?.binding && this._controls?.onBindingChange) {
         this._controls.binding.off?.('change', this._controls.onBindingChange)
       }
 
@@ -134,9 +133,9 @@ export default class TweakpaneUI {
         this._controls.save.btn?.off?.('click', this._controls.save.handler)
       }
 
-      // No intentamos remover los folders del pane para evitar romper otras cosas.
+      // 다른 동작을 깨뜨리지 않기 위해 pane에서 폴더를 제거하지는 않는다.
     } catch (e) {
-      // no fatal
+      // 치명적이지 않음
     }
   }
 }

@@ -1,29 +1,29 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OFF ROAD</title>
+    <title>오프 로드 - 3D 물류 시뮬레이션</title>
   </head>
   <body>
-  <div class="drive-menu" role="menu" aria-label="Driving controls">
-    <h4>Drive Controls</h4>
+  <div class="drive-menu" role="menu" aria-label="운전 조작">
+    <h4>운전 조작</h4>
     <ul>
-      <li><span class="key">W / ↑</span><span class="action">Accelerate</span></li>
-      <li><span class="key">S / ↓</span><span class="action">Reverse</span></li>
-      <li><span class="key">A / ←</span><span class="action">Steer Left</span></li>
-      <li><span class="key">D / →</span><span class="action">Steer Right</span></li>
-      <li><span class="key">Space</span><span class="action">Brake</span></li>
-      <li><span class="key">B</span><span class="action">Hazards</span></li>
-      <li><span class="key">L</span><span class="action">Lights</span></li>
+      <li><span class="key">W / ↑</span><span class="action">전진</span></li>
+      <li><span class="key">S / ↓</span><span class="action">후진</span></li>
+      <li><span class="key">A / ←</span><span class="action">좌회전</span></li>
+      <li><span class="key">D / →</span><span class="action">우회전</span></li>
+      <li><span class="key">Space</span><span class="action">브레이크</span></li>
+      <li><span class="key">B</span><span class="action">비상등</span></li>
+      <li><span class="key">L</span><span class="action">라이트</span></li>
     </ul>
-    <h4>Edit Controls</h4>
+    <h4>편집 조작</h4>
     <ul>
-      <li><span class="key">X</span><span class="action">Delete</span></li>
+      <li><span class="key">X</span><span class="action">삭제</span></li>
     </ul>
   </div>
-    <button class="recordBtn" id="recordBtn">🎬 Grabar</button>
+    <button class="recordBtn" id="recordBtn">🎬 녹화</button>
     <canvas class="game"></canvas>
     <script type="module">
       const recordBtn = document.getElementById('recordBtn');
