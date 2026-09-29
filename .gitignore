@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Distribution archives
+*.zip
+dist
+dist-ssr
+*.local
